@@ -3,7 +3,7 @@ import { onMounted, ref } from 'vue';
 
 defineProps(['modelValue']);
 
-defineEmits(['update:modelValue']);
+defineEmits(['update:modelValue']);    // カスタムイベント名
 
 const input = ref(null);
 
@@ -17,6 +17,8 @@ defineExpose({ focus: () => input.value.focus() });
 </script>
 
 <template>
+    <!-- @inputイベントが生じたら子から親に打ち上げる -->
+    <!-- @inputがイベント @input="$emit('カスタムイベント名', 渡す値)-->
     <input
         class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
         :value="modelValue"

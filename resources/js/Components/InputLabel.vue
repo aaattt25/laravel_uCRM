@@ -1,5 +1,5 @@
 <script setup>
-defineProps(['value']);
+defineProps(['value']);  // 親コンポーネントから子に落ちてくる設定。変数を定義しておくと使える
 </script>
 
 <template>

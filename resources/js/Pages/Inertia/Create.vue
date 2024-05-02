@@ -2,6 +2,7 @@
 import { reactive } from 'vue'
 import { Inertia } from '@inertiajs/inertia' // 古い書き方
 // import { router } from '@inertiajs/vue3' 新しい書き方
+// import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 
 defineProps({
   errors: Object
@@ -19,6 +20,7 @@ const submitFunction = () => {
 </script>
 
 <template>
+  <BreezeValidationErrors :errors="errors" />
   <form @submit.prevent="submitFunction">
     <input type="text" name="title" v-model="form.title"><br>
     <div v-if="errors.title">{{ errors.title }}</div>
