@@ -1,6 +1,6 @@
 <script setup>
-import { Link } from '@inertiajs/inertia-vue3'  // definePropsを書くときに書くのかな
-import { ref } from 'vue'     // definePropsを書くときに書くのかな
+import { Link } from '@inertiajs/inertia-vue3'
+import { ref } from 'vue'
 
 defineProps({
   blogs: Array
