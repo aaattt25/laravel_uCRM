@@ -1,6 +1,6 @@
 <script setup>
 import { getToday } from '@/common';
-import { onMounted, reactive, ref } from 'vue';
+import { onMounted, reactive, ref, computed } from 'vue';
 
 const itemList = ref([])   // リアクティブな配列を準備
 
@@ -23,6 +23,14 @@ onMounted(() => {                // ページ読み込み後、即座に実行
 
 
 const quantity = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+const totalPrice = computed(() => {
+  let total = 0
+  itemList.value.forEach(item => {
+    total += item.price * item.quantity
+  })
+  return total
+})
 </script>
 
 <template>
@@ -52,9 +60,7 @@ const quantity = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
       <td>{{ item.price }}</td>
       <td>
         <select name="quantity" v-model="item.quantity">
-          <option v-for="q in quantity" :value="q">
-            {{ q }}
-          </option>
+          <option v-for="q in quantity" :value="q">{{ q }}</option>
         </select>
       </td>
       <td>
@@ -63,4 +69,5 @@ const quantity = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
     </tr>
   </tbody>
 </table>
+合計：{{ totalPrice }}円
 </template>
