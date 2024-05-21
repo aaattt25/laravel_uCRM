@@ -68,13 +68,13 @@ class ItemController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Item  $item
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
     public function show(Item $item)
     {
-        // dd($item);
         return Inertia::render('Items/Show',[
-            'item' => $item
+            'item' => $item,
+            'avatar_url' => asset('storage/'.$item->avatar),
         ]);
     }
 
