@@ -57,6 +57,7 @@ class ItemController extends Controller
             'memo' => $request->memo,
             'price' => $request->price,
         ]);
+
         return to_route('items.index')
             ->with([
                 'message' => '登録しました。',
@@ -73,8 +74,10 @@ class ItemController extends Controller
     public function show(Item $item)
     {
         // dd($item);
+        // dd(asset('storage/'.$item->avatar));
         return Inertia::render('Items/Show',[
-            'item' => $item
+            'item' => $item,
+            'avatar_url' => asset('storage/'.$item->avatar),
         ]);
     }
 
