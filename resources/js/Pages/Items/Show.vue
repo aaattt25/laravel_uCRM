@@ -7,7 +7,8 @@ import { Inertia } from '@inertiajs/inertia' // 古い書き方
 
 
 defineProps({
-  item: Object
+  item: Object,
+  avatar_url: String
 })
 
 const deleteItem = id => {
@@ -61,6 +62,15 @@ const deleteItem = id => {
                                   </div>
                                 </div>
                                 <div class="p-2 w-full">
+                                  <div class="relative">
+                                    <div class="flex justify-around items-center">
+                                      <img :src="avatar_url" alt="" width="100">
+                                      <img src="/storage/12.png" alt="" width="100">
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="p-2 w-full">
                                   <Link as="button" :href="route('items.edit', { item: item.id })" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">編集する</Link>
                                 </div>
 
@@ -68,7 +78,6 @@ const deleteItem = id => {
                                   <button @click="deleteItem(item.id)" class="
                                   flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg">削除する</button>
                                 </div>
-
                               </div>
                             </div>
                           </div>

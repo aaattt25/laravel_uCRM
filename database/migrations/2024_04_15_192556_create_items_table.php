@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();   // 仮追加
+            $table->string('avatar')->nullable();   // 仮追加
             $table->string('memo')->nullable();
-            $table->integer('price');
+            $table->integer('price')->nullable();   // 仮追加
             $table->boolean('is_selling')->default(true);
             $table->timestamps();
         });
