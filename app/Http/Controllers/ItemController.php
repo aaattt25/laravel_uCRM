@@ -6,6 +6,7 @@ use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Models\Item;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
@@ -41,8 +42,18 @@ class ItemController extends Controller
      */
     public function store(StoreItemRequest $request)
     {
+        // $file_name = $request()->file->getClientOriginalName();
+        // dd($request->all());
+        // dd($request->name);
+        // dd($request->avatar); うまくいった
+
+        $file = request()->file('avatar');
+        $file_name = request()->file('avatar')->getClientOriginalName();  // ファイル名とれた
+        Storage::putFileAs('public/', $file, $file_name);   // 保存できた
+
         Item::create([
             'name' => $request->name,
+            'avatar' => $file_name,
             'memo' => $request->memo,
             'price' => $request->price,
         ]);

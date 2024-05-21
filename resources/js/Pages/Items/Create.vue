@@ -4,14 +4,21 @@ import { Head } from '@inertiajs/vue3';
 import { reactive } from 'vue'
 import { Inertia } from '@inertiajs/inertia' // 古い書き方
 // import { router } from '@inertiajs/vue3' 新しい書き方
+import { useForm } from '@inertiajs/inertia-vue3'
 
 defineProps({
   errors: Object
 })
 
 // オブジェクトの時はreactiveと書いたほうが描きやすいです。refでもいい
-const form = reactive({
+// const form = reactive({
+//   name: null,
+//   memo: null,
+//   price: null
+// })
+const form = useForm({
   name: null,
+  avatar: null,
   memo: null,
   price: null
 })
@@ -45,6 +52,15 @@ const storeItem = () => {
                                   </div>
                                 </div>
                                 <div v-if="errors.name">{{ errors.name }}</div>
+
+                                <div class="p-2 w-full">
+                                  <div class="relative">
+                                    <label for="avatar" class="leading-7 text-sm text-gray-600">商品名</label>
+                                    <!-- <input type="text" id="name" name="name" v-model="form.name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"> -->
+                                    <input type="file"id="avatar" name="avatar" @input="form.avatar = $event.target.files[0]" />
+                                  </div>
+                                </div>
+
                                 <div class="p-2 w-full">
                                   <div class="relative">
                                     <label for="memo" class="leading-7 text-sm text-gray-600">メモ</label>
