@@ -7,7 +7,7 @@ import { Inertia } from '@inertiajs/inertia' // 古い書き方
 
 
 defineProps({
-  item: Object
+  item: Object,
 })
 
 const deleteItem = id => {
@@ -60,6 +60,22 @@ const deleteItem = id => {
                                     </div>
                                   </div>
                                 </div>
+                                <div class="p-2 w-full">
+                                  <div class="relative">
+                                    <!-- <img v-if="item.avatar" class="rounded-t-lg " src="`${item.avatar}`" alt="" /> -->
+                                    <!-- <img class="rounded-t-lg " src="12.png" alt="" /> -->
+                                    <!-- <img class="rounded-t-lg " src="/12.png" alt="" /> -->
+                                    <!-- <img class="rounded-t-lg " src="/public/12.png" alt="" /> -->
+                                    <!-- <img src="{{ asset('storage/avatar' . $user->thumbnail) }}" /> -->
+                                    <!-- <img :src="'/images/top-appeal.jpg'" alt="" class="c-img"> -->
+                                    <img src="{{ asset('storage/app/public' . '12.png') }}" />
+                                    <img src="{{ asset('storage/app/public' . item.avatar ) }}" />
+                                    <img src="{{ asset('storage/' . item.avatar ) }}" />
+                                    <img :src="'/12.png'" alt="タイトルロゴ" class="rounded-t-lg">
+                                    <img :src="'/`${item.avatar}`'" alt="タイトルロゴ" class="rounded-t-lg">
+                                  </div>
+                                </div>
+
                                 <div class="p-2 w-full">
                                   <Link as="button" :href="route('items.edit', { item: item.id })" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">編集する</Link>
                                 </div>
